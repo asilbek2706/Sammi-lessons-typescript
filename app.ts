@@ -1,50 +1,26 @@
-
-
-/*const cars: string[] = ["BMW", "Audi"]
-const numbers: number[] = [1, 2, 3, 4, 5]
-const bools: boolean[] = [true, true, false]
-
-const result = numbers.map(num => `Number: ${num}`)
-console.log(result)
-
-// Union types
-const mixed: (number | string)[] = [1, "Hello", 2, "World"]
-
-const upperCaseCars = cars
-    .map(car => car.toUpperCase())
-    .filter(car => car.startsWith('B'))
-
-console.log(upperCaseCars)*/
-
-/*const person = {
-    firstName: "Asilbek", // required
-    lastName: "Karomatov", //required
-    city: "Bukhara",
-    skills: {
-        programming: "typescript",
-        design: "Figma",
-    }
+function getInfo(): [string, number]{
+    return ['Asilbek', 20]
 }
 
-function getName(data: { firstName: string; lastName: string }): string {
-    return `${data.firstName} ${data.lastName}`;
-}
+const logger = getInfo()
 
-const person1 = getName(person)
-console.log(person1)*/
-/*
-function getName(firstName: string, lastName: string): string {
-    return `${firstName} ${lastName}`;
-}
+const [fullName, age] = logger
+console.log(fullName, age)
 
-const checkAdult = (age: number): boolean => {
-    return age >= 18;
-}
 
-const age1 = checkAdult(19)
-console.log(age1)
+/*// Tuples unio type
+let coordinates: [number, string | number] = [98, 12]
+coordinates = [12, 'east']
 
-const person1 = getName("Asilbek", "Karomatov")
-console.log(person1)
+console.log(coordinates[0])
+console.log(coordinates[1])*/
 
-// void = hech narsa qaytarmaydi*/
+
+// const person: [string, number] = ['AsilbekKaromatov', 20]
+//
+// person.push('false')
+//
+// console.log(person)
+//
+// console.log(person[0])
+// console.log(person[1])
