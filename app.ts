@@ -1,4 +1,20 @@
-const person = {
+const cars: string[] = ["BMW", "Audi"]
+const numbers: number[] = [1, 2, 3, 4, 5]
+const bools: boolean[] = [true, true, false]
+
+const result = numbers.map(num => `Number: ${num}`)
+console.log(result)
+
+// Union types
+const mixed: (number | string)[] = [1, "Hello", 2, "World"]
+
+/*const upperCaseCars = cars
+    .map(car => car.toUpperCase())
+    .filter(car => car.startsWith('B'))
+
+console.log(upperCaseCars)*/
+
+/*const person = {
     firstName: "Asilbek", // required
     lastName: "Karomatov", //required
     city: "Bukhara",
@@ -13,7 +29,7 @@ function getName(data: { firstName: string; lastName: string }): string {
 }
 
 const person1 = getName(person)
-console.log(person1)
+console.log(person1)*/
 /*
 function getName(firstName: string, lastName: string): string {
     return `${firstName} ${lastName}`;
