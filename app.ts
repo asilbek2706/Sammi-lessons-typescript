@@ -1,4 +1,6 @@
-const cars: string[] = ["BMW", "Audi"]
+
+
+/*const cars: string[] = ["BMW", "Audi"]
 const numbers: number[] = [1, 2, 3, 4, 5]
 const bools: boolean[] = [true, true, false]
 
@@ -8,7 +10,7 @@ console.log(result)
 // Union types
 const mixed: (number | string)[] = [1, "Hello", 2, "World"]
 
-/*const upperCaseCars = cars
+const upperCaseCars = cars
     .map(car => car.toUpperCase())
     .filter(car => car.startsWith('B'))
 
