@@ -1,9 +1,16 @@
-let fullName: string = 'Asilbek'
-console.log(typeof fullName)
+/*
+function getName(firstName: string, lastName: string): string {
+    return `${firstName} ${lastName}`;
+}
 
-const salary: number = 10000
-const bonus: number = 5000
-const total: number = salary + bonus
-console.log(total)
+const checkAdult = (age: number): boolean => {
+    return age >= 18;
+}
 
-let isMarried: boolean = true;
+const age1 = checkAdult(19)
+console.log(age1)
+
+const person1 = getName("Asilbek", "Karomatov")
+console.log(person1)
+
+// void = hech narsa qaytarmaydi*/

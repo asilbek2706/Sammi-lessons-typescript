@@ -23,6 +23,7 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "esModuleInterop": true,
+    "noImplicitAny": true,
     // Style Options
     // "noImplicitReturns": true,
     // "noImplicitOverride": true,
