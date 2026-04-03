@@ -1,25 +1,57 @@
-// Literal type
+// Type alias
 
-type Status = 'success' | 'error'
+import type {CompanyWorker} from "./app.type";
 
-function getStatus(status: Status): 'success' | 'error'{
-    if (status === 'success') {
-        return 'success';
-    } else {
-        return 'error';
-    }
+let worker1: CompanyWorker = {
+    firstName: 'Asil',
+    lastName: 'Dow' ,
+    company: 'Google',
+    role: 'Manager',
 }
 
-console.log(getStatus('success'));
-/*let isMarried: true
+let worker2: CompanyWorker = {
+    firstName: 'Asilbek',
+    lastName: 'Dow' ,
+    company: 'Microsoft',
+    role: 'Frontend Developer'
+}
 
-isMarried = true*/
+/*import type {Logger} from "./app.type";
 
-/*let code: 200 | 400| 500 = 200
+const log: Logger = (message) => {
+    return message.toUpperCase();
+}
 
-code = 400*/
+console.log(log('Hello World!'));*/
+
+/*import type {Person} from "./app.type";
+
+const user1: Person = {
+    firstName: 'Asilbek',
+    lastName: 'Karomatov',
+    age: 20,
+    skills: ['Javascript', 'CSS', 'NodeJS'],
+}
+
+const user2: Person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    age: 25,
+    skills: ['Typescript', 'HTML', 'VueJs', 'Angular'],
+}
+
+console.log(user1)
+console.log(user2)*/
 
 /*
-let statusMessage: 'success' | 'error' | 'loading'
+type ID = string | number
 
-statusMessage = 'loading';*/
+let userId: ID
+
+userId = 1
+userId = 'hello'
+
+let productId: ID
+
+productId = 2
+productId = '3'*/
