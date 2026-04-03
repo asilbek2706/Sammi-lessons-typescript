@@ -1,25 +1,23 @@
+"use strict";
 // Literal type
-
-type Status = 'success' | 'error'
-
-function getStatus(status: Status): 'success' | 'error'{
+Object.defineProperty(exports, "__esModule", { value: true });
+function getStatus(status) {
     if (status === 'success') {
         return 'success';
-    } else {
+    }
+    else {
         return 'error';
     }
 }
-
 console.log(getStatus('success'));
 /*let isMarried: true
 
 isMarried = true*/
-
 /*let code: 200 | 400| 500 = 200
 
 code = 400*/
-
 /*
 let statusMessage: 'success' | 'error' | 'loading'
 
 statusMessage = 'loading';*/
+//# sourceMappingURL=app.js.map
