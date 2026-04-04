@@ -5,7 +5,7 @@ export type Person = {
     skills: string[],
 }
 
-export type Logger = (message: string) => string;
+export type Logger = (message: string) => void;
 
 export type IPerson = {
     firstName: string,
