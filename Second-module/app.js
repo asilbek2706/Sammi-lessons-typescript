@@ -1,14 +1,8 @@
 "use strict";
-//Interfaces
+// Interfaces and index signature
 Object.defineProperty(exports, "__esModule", { value: true });
-let person = {
-    firstName: 'Joe',
-    lastName: 'Doe',
-    role: 'Manager',
-    logger: (message) => {
-        console.log(message);
-    },
+const person = {
+    name: 'john',
+    age: 30
 };
-person.role = 'Admin';
-console.log(person);
 //# sourceMappingURL=app.js.map

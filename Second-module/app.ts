@@ -1,17 +1,9 @@
-//Interfaces
+// Interfaces and index signature
 
 
 import type {Person} from "./app.interface";
 
-let person: Person = {
-    firstName: 'Joe',
-    lastName: 'Doe',
-    role: 'Manager',
-    logger: (message: string) => {
-        console.log(message);
-    },
+const person: Person = {
+    name: 'john',
+    age: 30
 }
-
-person.role = 'Admin';
-
-console.log(person);
