@@ -1,65 +1,72 @@
-//Type Casting (Type Assertion) -> Tur bilan ishlash
+import {type IUser, Role} from "./interface/user.interface";
+import {ICourse} from "./interface/course.interface";
 
-let message: unknown = "Hello World!"
-
-let strLength1: number = (<string>message).length //Angle bracket syntax
-console.log(strLength1)
-
-let strLength2: string = message as string // as syntax
-console.log(strLength2.length)
-
-// Type guards -> Turi bilan tekshirish
-
-type Car = {
-    speed: number;
+function isAdmin(user: IUser): user is IUser & {role: Role.ADMIN} {
+    return user.role === Role.ADMIN
 }
 
-type Plane = {
-    altitude: number;
-}
+const courses: ICourse[] = []
 
-function getInfo(vehicle: Car | Plane){
-    if('speed' in vehicle){
-        console.log(`Speed: ${vehicle.speed}km/h`);
-    }else{
-        console.log(`Altitude: ${vehicle.altitude}metres`);
+function addCourse(user: IUser, course: ICourse) {
+    if (isAdmin(user)) {
+        courses.push(course)
+        console.log(`Course added: ${course.title}`)
+    } else {
+        console.log('Only admin can add course')
     }
 }
 
-getInfo({speed: 100})
-getInfo({altitude: 300})
+function enrollStudent(user: IUser, courseId: number) {
+    const course = courses.find((course) => course.id === courseId)
 
-class Dog{
-    bark(){
-        console.log('Woof!')
+    if (!course) {
+        console.log('Course not found.')
+        return
+    }
+
+    if(user.role === Role.STUDENT) {
+        course.students.push(user)
+        console.log(`Student enrolled ${user.name}`)
+    } else {
+        console.log('Only students can enroll')
     }
 }
 
-class Cat{
-    meow(){
-        console.log('Meow!')
+function listStudent(user: IUser, courseId: number) {
+    if (!isAdmin(user)) {
+        console.log('Only admin can see students list')
+        return
     }
+
+    const course = courses.find((course) => course.id === courseId)
+    if (!course) {
+        console.log('Course not found.')
+        return
+    }
+
+    console.log(`Students is ${course.title}: ${course.students.map(c => c.name).join(', ')}`
+    )
 }
 
-function makeSound(animal: Dog | Cat) {
-    if(animal instanceof Dog){
-        animal.bark()
-    }else{
-        animal.meow()
-    }
+
+// Data
+const admin: IUser = { id: 1, name: 'Admin', role: Role.ADMIN }
+const student1: IUser = { id: 2, name: 'Ali', role: Role.STUDENT }
+const student2: IUser = { id: 3, name: 'Osman', role: Role.STUDENT }
+
+const course: ICourse = {
+    id: 101,
+    title: 'Math',
+    description: 'Math courses',
+    students: [],
 }
 
-makeSound(new Dog())
-makeSound(new Cat())
+// Call functions
+addCourse(admin, course)
 
-//Asserts -> Tasdiqlash
+enrollStudent(student1, course.id)
+enrollStudent(student2, course.id)
 
-function logNumber(value: unknown): asserts value is number {
-    if(typeof value !== "number"){
-        throw new Error('value is not a number')
-    }
-}
+listStudent(admin, course.id)
 
-const age: unknown = 20
-logNumber(age)
-console.log(age + 10)
+console.log(courses)

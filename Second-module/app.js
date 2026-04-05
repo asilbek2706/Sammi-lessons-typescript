@@ -1,48 +1,59 @@
 "use strict";
-//Type Casting (Type Assertion) -> Tur bilan ishlash
 Object.defineProperty(exports, "__esModule", { value: true });
-let message = "Hello World!";
-let strLength1 = message.length; //Angle bracket syntax
-console.log(strLength1);
-let strLength2 = message; // as syntax
-console.log(strLength2.length);
-function getInfo(vehicle) {
-    if ('speed' in vehicle) {
-        console.log(`Speed: ${vehicle.speed}km/h`);
+const user_interface_1 = require("./interface/user.interface");
+function isAdmin(user) {
+    return user.role === user_interface_1.Role.ADMIN;
+}
+const courses = [];
+function addCourse(user, course) {
+    if (isAdmin(user)) {
+        courses.push(course);
+        console.log(`Course added: ${course.title}`);
     }
     else {
-        console.log(`Altitude: ${vehicle.altitude}metres`);
+        console.log('Only admin can add course');
     }
 }
-getInfo({ speed: 100 });
-getInfo({ altitude: 300 });
-class Dog {
-    bark() {
-        console.log('Woof!');
+function enrollStudent(user, courseId) {
+    const course = courses.find((course) => course.id === courseId);
+    if (!course) {
+        console.log('Course not found.');
+        return;
     }
-}
-class Cat {
-    meow() {
-        console.log('Meow!');
-    }
-}
-function makeSound(animal) {
-    if (animal instanceof Dog) {
-        animal.bark();
+    if (user.role === user_interface_1.Role.STUDENT) {
+        course.students.push(user);
+        console.log(`Student enrolled ${user.name}`);
     }
     else {
-        animal.meow();
+        console.log('Only students can enroll');
     }
 }
-makeSound(new Dog());
-makeSound(new Cat());
-//Asserts -> Tasdiqlash
-function logNumber(value) {
-    if (typeof value !== "number") {
-        throw new Error('value is not a number');
+function listStudent(user, courseId) {
+    if (!isAdmin(user)) {
+        console.log('Only admin can see students list');
+        return;
     }
+    const course = courses.find((course) => course.id === courseId);
+    if (!course) {
+        console.log('Course not found.');
+        return;
+    }
+    console.log(`Students is ${course.title}: ${course.students.map(c => c.name).join(', ')}`);
 }
-const age = 20;
-logNumber(age);
-console.log(age + 10);
+// Data
+const admin = { id: 1, name: 'Admin', role: user_interface_1.Role.ADMIN };
+const student1 = { id: 2, name: 'Ali', role: user_interface_1.Role.STUDENT };
+const student2 = { id: 3, name: 'Osman', role: user_interface_1.Role.STUDENT };
+const course = {
+    id: 101,
+    title: 'Math',
+    description: 'Math courses',
+    students: [],
+};
+// Call functions
+addCourse(admin, course);
+enrollStudent(student1, course.id);
+enrollStudent(student2, course.id);
+listStudent(admin, course.id);
+console.log(courses);
 //# sourceMappingURL=app.js.map
