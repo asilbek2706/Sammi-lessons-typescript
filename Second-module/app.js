@@ -1,28 +1,28 @@
 "use strict";
-//Unknown type
 Object.defineProperty(exports, "__esModule", { value: true });
-let person = {
-    name: 'John',
-    age: 32,
-};
-if (typeof person === 'object') {
-    const obj = person;
-    console.log(obj.name);
-    console.log(obj.age);
-}
-/*let value: unknown = 'Hello World';
-let string: string = <string>value
-console.log(string.toUpperCase());*/
-/*function logger(value: unknown) {
-    if (typeof value === 'string') {
-        return value.toUpperCase()
-    } else if (typeof value === 'number') {
-        return value.toFixed(2)
-    } else{
-        return value
+function infiteLoop() {
+    while (true) {
+        console.log('Hello');
     }
 }
+infiteLoop(); // Bu funksiya hech qachon tugamaydi
+/*
+function throwError(message: string): never {
+    throw new Error(message);
+}
 
-console.log(logger(true))
-logger(false)*/
+async function fetchData(){
+      try {
+          const response = await fetch("https://jsonplaceholder.typicode.com/uses");
+          if(!response.ok){
+              throwError('No data found.');
+          }
+          const data = await response.json();
+          console.log(data);
+      } catch (error) {
+          throwError('No data found.');
+      }
+}
+
+fetchData();*/
 //# sourceMappingURL=app.js.map
