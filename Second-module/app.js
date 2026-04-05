@@ -1,28 +1,21 @@
 "use strict";
+// null - hech qanday qiymat yo'q, qolda ozimiz beramiz
+//undefined - ozgaruvchiga qiymat berilmagan
 Object.defineProperty(exports, "__esModule", { value: true });
-function infiteLoop() {
-    while (true) {
-        console.log('Hello');
+let username = null;
+//Nullish coalescing operator
+let showUsername = username ?? 'Guest';
+console.log(showUsername);
+function logger(msg) {
+    if (msg !== null) {
+        console.log(msg.toUpperCase());
+    }
+    else {
+        console.log('No message provider');
     }
 }
-infiteLoop(); // Bu funksiya hech qachon tugamaydi
-/*
-function throwError(message: string): never {
-    throw new Error(message);
-}
-
-async function fetchData(){
-      try {
-          const response = await fetch("https://jsonplaceholder.typicode.com/uses");
-          if(!response.ok){
-              throwError('No data found.');
-          }
-          const data = await response.json();
-          console.log(data);
-      } catch (error) {
-          throwError('No data found.');
-      }
-}
-
-fetchData();*/
+logger('Hello World!');
+logger(null);
+let x = null;
+console.log(x);
 //# sourceMappingURL=app.js.map
