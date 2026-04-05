@@ -1,18 +1,34 @@
-// void
+//Unknown type
 
-function logger(text: string, callback: (message: string) => void) {
-    console.log(text);
-    callback('Logged ' + text);
+let person: unknown = {
+    name: 'John',
+    age: 32,
 }
 
-logger('Hello', message => console.log(message));
-
-/*
-let unusable: void
-unusable = undefined*/
-/*
-function logger(text: string): void {
-    console.log(text);
+interface Person {
+    name: string
+    age: number
 }
 
-logger("Hello World!");*/
+if (typeof person === 'object') {
+    const obj = person as Person
+    console.log(obj.name)
+    console.log(obj.age)
+}
+
+/*let value: unknown = 'Hello World';
+let string: string = <string>value
+console.log(string.toUpperCase());*/
+
+/*function logger(value: unknown) {
+    if (typeof value === 'string') {
+        return value.toUpperCase()
+    } else if (typeof value === 'number') {
+        return value.toFixed(2)
+    } else{
+        return value
+    }
+}
+
+console.log(logger(true))
+logger(false)*/
