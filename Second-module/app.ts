@@ -7,6 +7,7 @@ function isAdmin(user: IUser): user is IUser & {role: Role.ADMIN} {
 
 const courses: ICourse[] = []
 
+
 function addCourse(user: IUser, course: ICourse) {
     if (isAdmin(user)) {
         courses.push(course)
