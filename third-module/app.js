@@ -1,16 +1,24 @@
 "use strict";
-//Create classes
 Object.defineProperty(exports, "__esModule", { value: true });
 class Car {
-    name;
+    name; // '!' => not null
     year;
-    constructor(name, year) {
-        this.name = name;
-        this.year = year;
+    constructor(nameOrData, year) {
+        if (typeof nameOrData === 'string') {
+            this.name = nameOrData;
+            this.year = year;
+        }
+        else if (typeof nameOrData === 'object') {
+            this.name = nameOrData.name;
+            this.year = nameOrData.year;
+        }
     }
 }
-const toyota = new Car('Toyota', new Date('2025-10-11'));
+const toyota = new Car('Toyota', new Date('2021-10-11'));
+const chevrolet = new Car({
+    name: 'Chevrolet',
+    year: new Date('2025-10-11'),
+});
 console.log(toyota);
-toyota.name = 'Toyota Corolla';
-console.log(toyota);
+console.log(chevrolet);
 //# sourceMappingURL=app.js.map
