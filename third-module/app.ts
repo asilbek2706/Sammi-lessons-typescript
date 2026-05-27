@@ -1,54 +1,26 @@
-enum Provider {
-    payme = 1,
-    uzum = 2,
-    click = 3,
-}
+class Employee {
+    private _salary: number
+    private _password: string
 
-enum Status {
-    Pending = 'Pending',
-    Approved = 'Approved',
-    Rejected = 'Rejected',
-}
-
-class Payment {
-    id: number
-    status: Status
-    createdAt: Date
-    updatedAt: Date
-    providers: string[]
-
-    constructor(id: Provider) {
-        this.id = id
-        this.status = Status.Pending
-        this.createdAt = new Date()
-        this.updatedAt = new Date()
-        this.providers = []
+    set salary(num: number) {
+        // so'm  = tiyin * 100
+        this._salary = num * 100;
     }
 
-    getLifeTime() {
-        return new Date().getTime() - this.createdAt.getTime()
-    }
-
-    rejectPayment(): void {
-        if (this.status === Status.Approved) {
-            throw new Error(`Payment is already approved`)
-        }
-        this.status = Status.Rejected
-        this.updatedAt = new Date()
-    }
-    getProviders(provider: string): void
-    getProviders(providers: string[]): void
-    getProviders(providerOrProviders: string | string[]): void {
-        if (typeof providerOrProviders === 'string') {
-            this.providers.push(providerOrProviders)
-        } else {
-            this.providers = this.providers.concat(providerOrProviders)
-        }
+    get salary(): string {
+        return this.salary
     }
 }
 
-const payme = new Payment(Provider.payme)
-payme.getProviders('Payme')
-console.log(payme.providers)
-payme.getProviders(['Payme', 'Uzum'])
-console.log(payme.providers)
+const john = new Employee()
+john.salary = 10
+const salary = john.salary
+console.log(salary)
+
+/** getter va setterning afzalliklari:
+ * 1. Encapsulation(Ma'lumotlarni yashirish)
+ * 2. Validation (Tekshirish)
+ * 3. Calculation(Hisoblash)
+ * */
+
+//getter va setter lar sync
