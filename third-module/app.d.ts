@@ -1,7 +1,7 @@
 export {};
-/** getter va setterning afzalliklari:
- * 1. Encapsulation(Ma'lumotlarni yashirish)
- * 2. Validation (Tekshirish)
- * 3. Calculation(Hisoblash)
+/**implements ning afzalliklari:
+ * 1. Type safety - tur xavfsizligi.
+ * 2. Polymorphism - bir nechta class da ishlatish imkoniyati.
+ * 3. Code organization - kodning tuzilishi
  * */
 //# sourceMappingURL=app.d.ts.map
