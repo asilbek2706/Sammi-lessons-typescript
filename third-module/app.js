@@ -1,67 +1,38 @@
 "use strict";
-/*
-class Animal {
-    id: number
-    name: string
-
-    constructor(name: string, id: number) {
-        this.name = name
-        this.id = id
-    }
-
-    speak() {
-        this.id = 10 * this.id
-        console.log(`${this.id} ${this.name} makes a sound!`)
-    }
-
-    showInfo(){
-        console.log(`Name: ${this.name}, ID: ${this.id}`)
-    }
-}
-
-class Cat extends Animal {
-    constructor(name: string) {
-        const id = Math.random()
-        super(name, id)
-    }
-
-    override speak(){
-        super.speak()
-        console.log(`${this.name} meows...`)
-    }
-
-}
-
-const cat = new Cat('cat')
-cat.speak()
-cat.showInfo()
-*/
 Object.defineProperty(exports, "__esModule", { value: true });
-class Shape {
-    color;
-    constructor(color) {
-        this.color = color;
+class User {
+    name;
+    constructor(name) {
+        this.name = name;
     }
-    describe() {
-        console.log(`This shape is ${this.color}`);
-    }
-}
-class Circle extends Shape {
-    radius;
-    constructor(color, radius) {
-        super(color);
-        this.radius = radius;
-    }
-    area() {
-        const area = Math.PI * this.radius ** 2;
-        console.log(area);
-    }
-    describe() {
-        super.describe();
-        console.log(`This circle has a radius of ${this.radius}`);
+    sayHello() {
+        console.log(`Hello ${this.name}`);
     }
 }
-const circle = new Circle('red', 10);
-circle.describe();
-circle.area();
+class Payment {
+    amount;
+    constructor(amount) {
+        this.amount = amount;
+    }
+    pay() {
+        console.log(`Paying ${this.amount}`);
+    }
+}
+class UserWithPayment {
+    user;
+    payment;
+    constructor(user, payment) {
+        this.user = user;
+        this.payment = payment;
+    }
+    showInfo() {
+        this.user.sayHello();
+        this.payment.pay();
+    }
+}
+const user = new User('Johnson');
+const payment = new Payment(100);
+const userWithPayment = new UserWithPayment(user, payment);
+userWithPayment.showInfo();
+// const userWithPayment = new UserWithPayment(new User('John'), new Payment(100))
 //# sourceMappingURL=app.js.map

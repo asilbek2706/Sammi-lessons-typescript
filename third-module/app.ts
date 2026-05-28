@@ -1,73 +1,45 @@
-/*
-class Animal {
-    id: number
+class User {
     name: string
 
-    constructor(name: string, id: number) {
+    constructor(name: string) {
         this.name = name
-        this.id = id
     }
 
-    speak() {
-        this.id = 10 * this.id
-        console.log(`${this.id} ${this.name} makes a sound!`)
+    sayHello() {
+        console.log(`Hello ${this.name}`)
+    }
+}
+
+class Payment {
+    amount: number
+
+    constructor(amount: number) {
+        this.amount = amount
+    }
+
+    pay() {
+        console.log(`Paying ${this.amount}`)
+    }
+}
+
+
+class UserWithPayment {
+    user: User
+    payment: Payment
+
+    constructor(user: User, payment: Payment) {
+        this.user = user
+        this.payment = payment
     }
 
     showInfo(){
-        console.log(`Name: ${this.name}, ID: ${this.id}`)
+        this.user.sayHello()
+        this.payment.pay()
     }
 }
 
-class Cat extends Animal {
-    constructor(name: string) {
-        const id = Math.random()
-        super(name, id)
-    }
-
-    override speak(){
-        super.speak()
-        console.log(`${this.name} meows...`)
-    }
-
-}
-
-const cat = new Cat('cat')
-cat.speak()
-cat.showInfo()
-*/
-
-
-class Shape{
-    color: string
-
-    constructor(color: string) {
-        this.color = color
-    }
-
-    describe(){
-        console.log(`This shape is ${this.color}`)
-    }
-}
-
-class Circle extends Shape {
-    radius: number
-
-    constructor(color: string, radius: number) {
-        super(color)
-        this.radius = radius
-    }
-
-    area() {
-        const area = Math.PI * this.radius ** 2
-        console.log(area)
-    }
-
-    override describe() {
-        super.describe()
-        console.log(`This circle has a radius of ${this.radius}`)
-    }
-}
-
-const circle  = new Circle('red', 10)
-circle.describe()
-circle.area()
+const user = new User('Johnson');
+const payment = new Payment(100)
+const userWithPayment = new UserWithPayment(user, payment)
+userWithPayment.showInfo()
+// const userWithPayment = new UserWithPayment(new User('John'), new Payment(100))
