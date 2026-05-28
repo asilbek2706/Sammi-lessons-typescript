@@ -1,41 +1,67 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class Car {
-    model;
-    constructor(model) {
-        this.model = model;
+/*
+class Animal {
+    id: number
+    name: string
+
+    constructor(name: string, id: number) {
+        this.name = name
+        this.id = id
     }
-    startEngine() {
-        console.log("Starting engine...");
+
+    speak() {
+        this.id = 10 * this.id
+        console.log(`${this.id} ${this.name} makes a sound!`)
     }
-    drive(speed) {
-        console.log(`${this.model}: Driving at ${speed} km/h.`);
+
+    showInfo(){
+        console.log(`Name: ${this.name}, ID: ${this.id}`)
     }
-    fly(speed) {
-        console.log(`${this.model}: Flying at ${speed} km/h.`);
-    }
-}
-const toyota = new Car('Toyota');
-toyota.startEngine();
-toyota.drive(100);
-toyota.fly(220);
-const honda = new Car('Honda');
-honda.startEngine();
-honda.drive(150);
-honda.fly(250);
-/**implements ning afzalliklari:
- * 1. Type safety - tur xavfsizligi.
- * 2. Polymorphism - bir nechta class da ishlatish imkoniyati.
- * 3. Code organization - kodning tuzilishi
- * */
-// implements - class'ga interface'ni require qilib qoyish...
-/*interface IUser{
-    logger(): void
 }
 
-class User implements IUser{
-    logger(){
-        console.log("Hello");
+class Cat extends Animal {
+    constructor(name: string) {
+        const id = Math.random()
+        super(name, id)
     }
-}*/ 
+
+    override speak(){
+        super.speak()
+        console.log(`${this.name} meows...`)
+    }
+
+}
+
+const cat = new Cat('cat')
+cat.speak()
+cat.showInfo()
+*/
+Object.defineProperty(exports, "__esModule", { value: true });
+class Shape {
+    color;
+    constructor(color) {
+        this.color = color;
+    }
+    describe() {
+        console.log(`This shape is ${this.color}`);
+    }
+}
+class Circle extends Shape {
+    radius;
+    constructor(color, radius) {
+        super(color);
+        this.radius = radius;
+    }
+    area() {
+        const area = Math.PI * this.radius ** 2;
+        console.log(area);
+    }
+    describe() {
+        super.describe();
+        console.log(`This circle has a radius of ${this.radius}`);
+    }
+}
+const circle = new Circle('red', 10);
+circle.describe();
+circle.area();
 //# sourceMappingURL=app.js.map

@@ -1,55 +1,73 @@
-interface IDrivable {
-    startEngine(): void;
-    drive(speed: number): void;
-}
+/*
+class Animal {
+    id: number
+    name: string
 
-interface IFlyable{
-    fly(speed: number): void
-}
-
-class Car implements IDrivable, IFlyable {
-    model: string
-
-    constructor(model: string) {
-        this.model = model
+    constructor(name: string, id: number) {
+        this.name = name
+        this.id = id
     }
 
-    startEngine(): void {
-        console.log("Starting engine...");
+    speak() {
+        this.id = 10 * this.id
+        console.log(`${this.id} ${this.name} makes a sound!`)
     }
 
-    drive(speed: number): void {
-        console.log(`${this.model}: Driving at ${speed} km/h.`);
-    }
-
-    fly(speed: number): void {
-        console.log(`${this.model}: Flying at ${speed} km/h.`);
+    showInfo(){
+        console.log(`Name: ${this.name}, ID: ${this.id}`)
     }
 }
 
-const toyota = new Car('Toyota');
-toyota.startEngine();
-toyota.drive(100)
-toyota.fly(220)
+class Cat extends Animal {
+    constructor(name: string) {
+        const id = Math.random()
+        super(name, id)
+    }
 
-const honda = new Car('Honda');
-honda.startEngine();
-honda.drive(150)
-honda.fly(250)
+    override speak(){
+        super.speak()
+        console.log(`${this.name} meows...`)
+    }
 
-/**implements ning afzalliklari:
- * 1. Type safety - tur xavfsizligi.
- * 2. Polymorphism - bir nechta class da ishlatish imkoniyati.
- * 3. Code organization - kodning tuzilishi
- * */
-
-// implements - class'ga interface'ni require qilib qoyish...
-/*interface IUser{
-    logger(): void
 }
 
-class User implements IUser{
-    logger(){
-        console.log("Hello");
+const cat = new Cat('cat')
+cat.speak()
+cat.showInfo()
+*/
+
+
+class Shape{
+    color: string
+
+    constructor(color: string) {
+        this.color = color
     }
-}*/
+
+    describe(){
+        console.log(`This shape is ${this.color}`)
+    }
+}
+
+class Circle extends Shape {
+    radius: number
+
+    constructor(color: string, radius: number) {
+        super(color)
+        this.radius = radius
+    }
+
+    area() {
+        const area = Math.PI * this.radius ** 2
+        console.log(area)
+    }
+
+    override describe() {
+        super.describe()
+        console.log(`This circle has a radius of ${this.radius}`)
+    }
+}
+
+const circle  = new Circle('red', 10)
+circle.describe()
+circle.area()
