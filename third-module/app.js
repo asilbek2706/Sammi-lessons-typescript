@@ -1,38 +1,33 @@
 "use strict";
+/**Access modifiers:
+ * 1. public = accessible from outside the class
+ * 2. private - accessible only within the class
+ * 3. protected - accessible only within the class and its subclasses
+ * */
 Object.defineProperty(exports, "__esModule", { value: true });
-class User {
+class Person {
+    age;
+    constructor(age) {
+        this.age = age;
+    }
+}
+class Employee extends Person {
     name;
-    constructor(name) {
+    salary;
+    constructor(name, salary, age) {
+        super(age);
         this.name = name;
+        this.salary = salary;
     }
-    sayHello() {
-        console.log(`Hello ${this.name}`);
+    showBonus() {
+        return this.salary * 0.2;
     }
-}
-class Payment {
-    amount;
-    constructor(amount) {
-        this.amount = amount;
-    }
-    pay() {
-        console.log(`Paying ${this.amount}`);
+    showAge() {
+        return this.age;
     }
 }
-class UserWithPayment {
-    user;
-    payment;
-    constructor(user, payment) {
-        this.user = user;
-        this.payment = payment;
-    }
-    showInfo() {
-        this.user.sayHello();
-        this.payment.pay();
-    }
-}
-const user = new User('Johnson');
-const payment = new Payment(100);
-const userWithPayment = new UserWithPayment(user, payment);
-userWithPayment.showInfo();
-// const userWithPayment = new UserWithPayment(new User('John'), new Payment(100))
+const employee = new Employee('Asilbek', 1000, 30);
+console.log(employee.name);
+console.log(employee.showBonus());
+console.log(employee.showAge());
 //# sourceMappingURL=app.js.map
