@@ -1,37 +1,47 @@
-/**Access modifiers:
- * 1. public = accessible from outside the class
- * 2. private - accessible only within the class
- * 3. protected - accessible only within the class and its subclasses
- * */
+/*
+class Counter {
+    static count: number = 0
+    private static secretKey: string = '123456'
+    title: string
 
-class Person {
-    protected age: number
+    constructor(title: string) {
+        this.title = title
+    }
 
-    constructor(age: number) {
-        this.age = age
+    static increment() {
+        this.count++
+    }
+
+    static add(a: number, b: number) {
+        this.increment()
+        return a + b
+    }
+
+    static gerSecretKey() {
+        return this.secretKey
+    }
+
+    getTitle() {
+        return this.title
     }
 }
 
-class Employee extends Person {
-    public name: string
-    private salary: number
+const c = new Counter('C1')
+console.log(c)
+console.log(c.getTitle())
 
-    constructor(name: string, salary: number, age: number) {
-        super(age)
-        this.name = name
-        this.salary = salary
-    }
+console.log(Counter.count)
+Counter.increment()
+console.log(Counter.count)
 
-    showBonus() {
-        return this.salary * 0.2
-    }
+console.log(Counter.add(5, 7))
+console.log(Counter.count)*/
 
-    showAge(){
-        return this.age
-    }
+
+class Parent{
+    static message: string = "Hello World!";
 }
 
-const employee = new Employee('Asilbek', 1000, 30)
-console.log(employee.name)
-console.log(employee.showBonus())
-console.log(employee.showAge())
+class Child extends Parent{}
+
+console.log(Child.message);

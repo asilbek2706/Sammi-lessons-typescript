@@ -1,33 +1,47 @@
 "use strict";
-/**Access modifiers:
- * 1. public = accessible from outside the class
- * 2. private - accessible only within the class
- * 3. protected - accessible only within the class and its subclasses
- * */
+/*
+class Counter {
+    static count: number = 0
+    private static secretKey: string = '123456'
+    title: string
+
+    constructor(title: string) {
+        this.title = title
+    }
+
+    static increment() {
+        this.count++
+    }
+
+    static add(a: number, b: number) {
+        this.increment()
+        return a + b
+    }
+
+    static gerSecretKey() {
+        return this.secretKey
+    }
+
+    getTitle() {
+        return this.title
+    }
+}
+
+const c = new Counter('C1')
+console.log(c)
+console.log(c.getTitle())
+
+console.log(Counter.count)
+Counter.increment()
+console.log(Counter.count)
+
+console.log(Counter.add(5, 7))
+console.log(Counter.count)*/
 Object.defineProperty(exports, "__esModule", { value: true });
-class Person {
-    age;
-    constructor(age) {
-        this.age = age;
-    }
+class Parent {
+    static message = "Hello World!";
 }
-class Employee extends Person {
-    name;
-    salary;
-    constructor(name, salary, age) {
-        super(age);
-        this.name = name;
-        this.salary = salary;
-    }
-    showBonus() {
-        return this.salary * 0.2;
-    }
-    showAge() {
-        return this.age;
-    }
+class Child extends Parent {
 }
-const employee = new Employee('Asilbek', 1000, 30);
-console.log(employee.name);
-console.log(employee.showBonus());
-console.log(employee.showAge());
+console.log(Child.message);
 //# sourceMappingURL=app.js.map
