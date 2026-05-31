@@ -1,28 +1,89 @@
-interface IAnimal {
-    makeSound(): void
-    move(): void
-}
+/*
+class Person{
+    name: string;
 
-interface IBird{
-    fly(): void
-}
+    constructor(name: string){
+        this.name = name;
+    }
 
-abstract class Animal {
-    constructor(public name: string) {}
+    greeting(){
+        this.name = 'Hello World';
+    }
+}*/
 
-    abstract makeSound(): void
+/*class Counter{
+    count: number = 1;
 
-    move(): void {
-        console.log(`Moving ${this.name} `)
+    increment(){
+        console.log(this)
+        console.log(this.count);
+        this.count++;
     }
 }
 
-class Cat extends Animal {
-    makeSound(): void {
-        console.log('meow-meow')
+const counter = new Counter();
+const incrementFn = counter.increment.bind(counter);
+
+incrementFn()
+incrementFn()
+incrementFn()
+incrementFn()
+incrementFn()*/
+
+/*class Counter {
+    count: number = 1
+
+    increment = () => {
+        console.log(this)
+        console.log(this.count)
+        this.count++
     }
 }
 
-const cat = new Cat('Kitty')
-cat.move()
-cat.makeSound()
+const counter = new Counter()
+const incrementFn = counter.increment
+
+incrementFn()
+incrementFn()
+incrementFn()
+incrementFn()
+incrementFn()*/
+/*
+
+class User{
+    name: string = 'Asilbek'
+
+    log(this: User){
+        console.log(this.name);
+    }
+}*/
+
+class Calculator {
+    value: number = 0
+
+    add(num: number): this {
+        this.value += num
+        return this
+    }
+
+    subtract(num: number) :this{
+        this.value -= num
+        return this
+    }
+
+    multiply(num:number): this{
+        this.value *= num
+        return this
+    }
+
+    getValue():number{
+        return this.value
+
+    }
+}
+
+
+const calc = new Calculator()
+const result = calc.add(5).subtract(3).multiply(4).getValue()
+console.log(result)
+console.log(calc.getValue())
