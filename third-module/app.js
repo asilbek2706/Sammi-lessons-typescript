@@ -1,47 +1,20 @@
 "use strict";
-/*
-class Counter {
-    static count: number = 0
-    private static secretKey: string = '123456'
-    title: string
-
-    constructor(title: string) {
-        this.title = title
-    }
-
-    static increment() {
-        this.count++
-    }
-
-    static add(a: number, b: number) {
-        this.increment()
-        return a + b
-    }
-
-    static gerSecretKey() {
-        return this.secretKey
-    }
-
-    getTitle() {
-        return this.title
-    }
-}
-
-const c = new Counter('C1')
-console.log(c)
-console.log(c.getTitle())
-
-console.log(Counter.count)
-Counter.increment()
-console.log(Counter.count)
-
-console.log(Counter.add(5, 7))
-console.log(Counter.count)*/
 Object.defineProperty(exports, "__esModule", { value: true });
-class Parent {
-    static message = "Hello World!";
+class Animal {
+    name;
+    constructor(name) {
+        this.name = name;
+    }
+    move() {
+        console.log(`Moving ${this.name} `);
+    }
 }
-class Child extends Parent {
+class Cat extends Animal {
+    makeSound() {
+        console.log('meow-meow');
+    }
 }
-console.log(Child.message);
+const cat = new Cat('Kitty');
+cat.move();
+cat.makeSound();
 //# sourceMappingURL=app.js.map

@@ -1,47 +1,28 @@
-/*
-class Counter {
-    static count: number = 0
-    private static secretKey: string = '123456'
-    title: string
+interface IAnimal {
+    makeSound(): void
+    move(): void
+}
 
-    constructor(title: string) {
-        this.title = title
-    }
+interface IBird{
+    fly(): void
+}
 
-    static increment() {
-        this.count++
-    }
+abstract class Animal {
+    constructor(public name: string) {}
 
-    static add(a: number, b: number) {
-        this.increment()
-        return a + b
-    }
+    abstract makeSound(): void
 
-    static gerSecretKey() {
-        return this.secretKey
-    }
-
-    getTitle() {
-        return this.title
+    move(): void {
+        console.log(`Moving ${this.name} `)
     }
 }
 
-const c = new Counter('C1')
-console.log(c)
-console.log(c.getTitle())
-
-console.log(Counter.count)
-Counter.increment()
-console.log(Counter.count)
-
-console.log(Counter.add(5, 7))
-console.log(Counter.count)*/
-
-
-class Parent{
-    static message: string = "Hello World!";
+class Cat extends Animal {
+    makeSound(): void {
+        console.log('meow-meow')
+    }
 }
 
-class Child extends Parent{}
-
-console.log(Child.message);
+const cat = new Cat('Kitty')
+cat.move()
+cat.makeSound()
