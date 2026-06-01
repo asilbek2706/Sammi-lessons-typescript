@@ -1,31 +1,18 @@
 "use strict";
 /*
-function identityNumber<T>(arg: T): T {
-    return arg
+function identuty<T, U>(val1: T, val2: U):[T, U] {
+    return [val1, val2];
 }
 
-identityNumber<number>(5)
-identityNumber<string>('Asil')*/
+const stringIdentity = identuty<string, number>('Hello', 5)
+const numberIdentity = identuty<number, string>(5, 'Hello')
+const booleanIdentity = identuty<boolean, number>(true, 5)*/
 Object.defineProperty(exports, "__esModule", { value: true });
-/*
-const numbers: Array<number> = [1, 2, 3, 4, 5]
-
-interface IUser{
-    name: string;
-    age: number;
+function createShape(val) {
+    return { radius: val };
 }
-
-const users: Array<IUser & {isMarried: boolean}> = [
-    {name: "John", age: 15, isMarried: false},
-    {name: "John", age: 23, isMarried: true},
-]*/
-var Roles;
-(function (Roles) {
-    Roles[Roles["ADMIN"] = 1] = "ADMIN";
-    Roles[Roles["USER"] = 2] = "USER";
-})(Roles || (Roles = {}));
-const roles = {
-    asil: Roles.ADMIN,
-    john: Roles.USER,
-};
+const firstShape = createShape(10);
+const secondShape = createShape('10deg');
+console.log(firstShape);
+console.log(secondShape);
 //# sourceMappingURL=app.js.map
