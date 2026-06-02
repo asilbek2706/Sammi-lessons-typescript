@@ -1,18 +1,27 @@
 "use strict";
-/*
-function identuty<T, U>(val1: T, val2: U):[T, U] {
-    return [val1, val2];
-}
-
-const stringIdentity = identuty<string, number>('Hello', 5)
-const numberIdentity = identuty<number, string>(5, 'Hello')
-const booleanIdentity = identuty<boolean, number>(true, 5)*/
 Object.defineProperty(exports, "__esModule", { value: true });
-function createShape(val) {
-    return { radius: val };
+async function fetchData(endpoint) {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/${endpoint}`);
+        if (!response.ok) {
+            throw new Error('Something went wrong!');
+        }
+        const data = await response.json();
+        return data;
+    }
+    catch (error) {
+        const result = error;
+        throw new Error(result.message);
+    }
 }
-const firstShape = createShape(10);
-const secondShape = createShape('10deg');
-console.log(firstShape);
-console.log(secondShape);
+async function getUsers() {
+    const users = await fetchData('users');
+    users.forEach((c) => console.log(`${c.id}. ${c.username}`));
+}
+async function getPosts() {
+    const posts = await fetchData('posts');
+    posts.forEach(c => console.log(`${c.id}. ${c.title}`));
+}
+getUsers();
+getPosts();
 //# sourceMappingURL=app.js.map
