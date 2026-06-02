@@ -1,27 +1,36 @@
 "use strict";
+/*
+interface Box<T> {
+    value: T
+}
+
+const stringBox: Box<string> = { value: 'Hello' }
+const numberBox: Box<number> = { value: 42 }
+*/
 Object.defineProperty(exports, "__esModule", { value: true });
-async function fetchData(endpoint) {
-    try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/${endpoint}`);
-        if (!response.ok) {
-            throw new Error('Something went wrong!');
-        }
-        const data = await response.json();
-        return data;
+const user = {
+    id: 1,
+    name: 'John',
+};
+const product = {
+    id: 2,
+    name: 'apple',
+};
+const course = {
+    _id: 3,
+    name: 'angular'
+};
+function getById(obj) {
+    if (obj.id) {
+        return obj.id;
     }
-    catch (error) {
-        const result = error;
-        throw new Error(result.message);
-    }
+    else if (obj._id)
+        return obj._id;
 }
-async function getUsers() {
-    const users = await fetchData('users');
-    users.forEach((c) => console.log(`${c.id}. ${c.username}`));
-}
-async function getPosts() {
-    const posts = await fetchData('posts');
-    posts.forEach(c => console.log(`${c.id}. ${c.title}`));
-}
-getUsers();
-getPosts();
+const userId = getById(user);
+const productId = getById(product);
+const courseId = getById(course);
+console.log(userId);
+console.log(productId);
+console.log(courseId);
 //# sourceMappingURL=app.js.map
