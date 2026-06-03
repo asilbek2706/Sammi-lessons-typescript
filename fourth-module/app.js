@@ -1,36 +1,23 @@
 "use strict";
-/*
-interface Box<T> {
-    value: T
-}
-
-const stringBox: Box<string> = { value: 'Hello' }
-const numberBox: Box<number> = { value: 42 }
-*/
 Object.defineProperty(exports, "__esModule", { value: true });
-const user = {
-    id: 1,
-    name: 'John',
-};
-const product = {
-    id: 2,
-    name: 'apple',
-};
-const course = {
-    _id: 3,
-    name: 'angular'
-};
-function getById(obj) {
-    if (obj.id) {
-        return obj.id;
+class Shape {
+    content;
+    radius;
+    constructor(content, radius) {
+        this.content = content;
+        this.radius = radius;
     }
-    else if (obj._id)
-        return obj._id;
+    getValue() {
+        return this.content;
+    }
+    getRadius() {
+        return this.radius;
+    }
 }
-const userId = getById(user);
-const productId = getById(product);
-const courseId = getById(course);
-console.log(userId);
-console.log(productId);
-console.log(courseId);
+const shape = new Shape('Hello', 20);
+console.log(shape.getValue());
+console.log(shape.getRadius());
+const shape2 = new Shape(50, '42deg');
+console.log(shape2.getValue());
+console.log(shape2.getRadius());
 //# sourceMappingURL=app.js.map
