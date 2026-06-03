@@ -1,72 +1,43 @@
 /*
-//typeof
 const user = {
-    name: 'John',
+    id: 1,
+    name: 'Ali',
     age: 20,
-    isMarried: false,
+    isMarried: true
 }
 
-type TypeUser = typeof user
+// type UserName = User['name' | 'isMarried'];
 
-function logUser(user: TypeUser) {
-    console.log(user)
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K]{
+    return obj[key];
 }
 
-logUser(user)
+const userName = getProperty(user, 'name');
+const userAge = getProperty(user, 'age');*/
 
-//keyof
-type TUser = {
-    name: string
-    age: number
-    isMarried: boolean
+/*//T extends U ? X : Y
+type IsBoolean<T> = T extends boolean ? 'yes' : 'no'
+type A = IsBoolean<boolean>
+type B = IsBoolean<string>*/
+
+/*
+interface IAdmin {
+    role: 'admin'
+    access: true
 }
 
-type UserKeys = keyof TUser
-
-function getUserKeys(key: UserKeys) {
-    console.log(key)
+interface IGuest {
+    role: 'guest'
+    access: false
 }
 
-// getUserKeys('age')
+type RoleAccess<T> = T extends {role: 'admin'} ? true : false
 
-function getProperty<T, K extends keyof T>(obj: T, key: K):T[K] {
-    return obj[key]
-}
+type AdminAccess = RoleAccess<IAdmin>
+type GuestAccess = RoleAccess<IGuest>*/
 
-const car = {
-    name: 'John',
-    age: 20,
-}
+type GetPropType<T, K extends keyof T> = T[K]
 
-const userName = getProperty(car, 'name')
-
-
-*/
-
-/*const user = {
-    name: 'John',
-    age: 25,
-}
-
-type UserKeys = keyof typeof user*/
-
-/**
- * typeof - qiymatning tipini aniqlash - type T = typeof obj
- * keyof - tipning ichidagi propertylarni aniqlash - typeT = keyof SameType
- * keyof typeof - qiymat ichidagi propertilarni aniqlash - type T = keyof typeof obj
- */
-
-const config = {
-    apiUrl: 'http://localhost:8080',
-    port: 8080,
-    debug: true,
-}
-
-type ConfigKeys = keyof typeof config
-
-function getConfigValue(key: ConfigKeys){
-    return config[key];
-}
-
-console.log(getConfigValue('port'))
-console.log(getConfigValue('apiUrl'))
+type User = { name: string; age: number }
+type NameType = GetPropType<User, 'name'>
+type AgeType = GetPropType<User, 'age'>
