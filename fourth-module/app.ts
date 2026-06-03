@@ -1,25 +1,72 @@
-class Shape<T, U> {
-    private content: T
-    private radius: U
-
-    constructor(content: T, radius: U) {
-        this.content = content
-        this.radius = radius
-    }
-
-    getValue(){
-        return this.content
-    }
-
-    getRadius(){
-        return this.radius
-    }
+/*
+//typeof
+const user = {
+    name: 'John',
+    age: 20,
+    isMarried: false,
 }
 
-const shape = new Shape<string, number>('Hello', 20)
-console.log(shape.getValue())
-console.log(shape.getRadius())
+type TypeUser = typeof user
 
-const shape2 = new Shape<number, string>(50, '42deg')
-console.log(shape2.getValue())
-console.log(shape2.getRadius())
+function logUser(user: TypeUser) {
+    console.log(user)
+}
+
+logUser(user)
+
+//keyof
+type TUser = {
+    name: string
+    age: number
+    isMarried: boolean
+}
+
+type UserKeys = keyof TUser
+
+function getUserKeys(key: UserKeys) {
+    console.log(key)
+}
+
+// getUserKeys('age')
+
+function getProperty<T, K extends keyof T>(obj: T, key: K):T[K] {
+    return obj[key]
+}
+
+const car = {
+    name: 'John',
+    age: 20,
+}
+
+const userName = getProperty(car, 'name')
+
+
+*/
+
+/*const user = {
+    name: 'John',
+    age: 25,
+}
+
+type UserKeys = keyof typeof user*/
+
+/**
+ * typeof - qiymatning tipini aniqlash - type T = typeof obj
+ * keyof - tipning ichidagi propertylarni aniqlash - typeT = keyof SameType
+ * keyof typeof - qiymat ichidagi propertilarni aniqlash - type T = keyof typeof obj
+ */
+
+const config = {
+    apiUrl: 'http://localhost:8080',
+    port: 8080,
+    debug: true,
+}
+
+type ConfigKeys = keyof typeof config
+
+function getConfigValue(key: ConfigKeys){
+    return config[key];
+}
+
+console.log(getConfigValue('port'))
+console.log(getConfigValue('apiUrl'))
