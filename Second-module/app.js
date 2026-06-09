@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_interface_1 = require("./interface/user.interface");
+const course_interface_1 = require("./interface/course.interface");
 function isAdmin(user) {
     return user.role === user_interface_1.Role.ADMIN;
 }
