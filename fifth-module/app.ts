@@ -1,43 +1,29 @@
-interface IShape {
-    name: string
-    getValue(): string
-}
-
-function ChangeShape<TBase extends { new (...args: any[]): {} }>(constructor: TBase) {
+// #1. Decorator
+function CreatedAt<T extends { new (...args: any[]): {} }>(constructor: T) {
     return class extends constructor {
-        name: string = 'Triangle'
-        color: string = 'red'
-        getInfo() {
-            return this.name + ':' + this.color
-        }
+        readonly createdAt = new Date()
     }
 }
 
-function WithVersion(version: '1.0.0' | '2.0.0') {
-    return function <TBase extends { new (args: any[]): {} }>(constructor: TBase) {
-        return class extends constructor {
-            version: string = version
-        }
-    }
-
-    // return function(constructor: Function){
-    //     console.log(`${version} - ${constructor.name}`)
-    // }
+// #2. Course class
+@CreatedAt
+class Course {
+    name: string = 'Typescript'
+    excerpt: string = 'Learn Typescript from scratch'
 }
 
-@ChangeShape
-@WithVersion('2.0.0')
-class Circle implements IShape {
-    name: string = 'circle'
-
-    constructor() {
-        console.log('Circle created')
-    }
-
-    getValue(): string {
-        return this.name
-    }
+// #3. Lesson class
+@CreatedAt
+class Lesson {
+    name: string = 'What is Typescript?'
+    content: string = 'Introduction to Typescript'
 }
 
-const shape = new Circle()
-console.log(shape)
+// #4. Type assertion
+type CreatedEntity = { createdAt: Date }
+
+const course = new Course() as Course & CreatedEntity
+const lesson = new Lesson() as Lesson & CreatedEntity
+
+console.log(course)
+console.log(lesson)
