@@ -3,23 +3,30 @@ interface IShape {
     getValue(): string
 }
 
-/*function Logger(constructor: Function) {
-    console.log(`Class created: ${constructor.name}`)
+function ChangeShape<TBase extends { new (...args: any[]): {} }>(constructor: TBase) {
+    return class extends constructor {
+        name: string = 'Triangle'
+        color: string = 'red'
+        getInfo() {
+            return this.name + ':' + this.color
+        }
+    }
 }
 
-function FirstDecorator(constructor: Function) {
-    console.log(`First Decorator: ${constructor.name}`)
-}
+function WithVersion(version: '1.0.0' | '2.0.0') {
+    return function <TBase extends { new (args: any[]): {} }>(constructor: TBase) {
+        return class extends constructor {
+            version: string = version
+        }
+    }
 
-@FirstDecorator
-@Logger*/
-
-function ChangeShape(constructor: Function) {
-    constructor.prototype.name =  'Triangle'
-    constructor.prototype.color =  '#ff0000'
+    // return function(constructor: Function){
+    //     console.log(`${version} - ${constructor.name}`)
+    // }
 }
 
 @ChangeShape
+@WithVersion('2.0.0')
 class Circle implements IShape {
     name: string = 'circle'
 
@@ -34,15 +41,3 @@ class Circle implements IShape {
 
 const shape = new Circle()
 console.log(shape)
-// @ts-ignore
-console.log(shape.color)
-
-
-//
-// function nullShape(shape: IShape) {
-//     shape.name = 'null'
-//     return shape
-// }
-//
-// const shape = nullShape(changeShape(new Circle()))
-// console.log(shape)

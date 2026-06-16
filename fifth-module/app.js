@@ -5,20 +5,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// Object.defineProperty(exports, "__esModule", { value: true });
-/*function Logger(constructor: Function) {
-    console.log(`Class created: ${constructor.name}`)
-}
-
-function FirstDecorator(constructor: Function) {
-    console.log(`First Decorator: ${constructor.name}`)
-}
-
-@FirstDecorator
-@Logger*/
+Object.defineProperty(exports, "__esModule", { value: true });
 function ChangeShape(constructor) {
-    constructor.prototype.name = 'Triangle';
-    constructor.prototype.color = '#ff0000';
+    return class extends constructor {
+        name = 'Triangle';
+        color = 'red';
+        getInfo() {
+            return this.name + ':' + this.color;
+        }
+    };
+}
+function WithVersion(version) {
+    return function (constructor) {
+        return class extends constructor {
+            version = version;
+        };
+    };
+    // return function(constructor: Function){
+    //     console.log(`${version} - ${constructor.name}`)
+    // }
 }
 let Circle = class Circle {
     name = 'circle';
@@ -30,18 +35,9 @@ let Circle = class Circle {
     }
 };
 Circle = __decorate([
-    ChangeShape
+    ChangeShape,
+    WithVersion('2.0.0')
 ], Circle);
 const shape = new Circle();
 console.log(shape);
-// @ts-ignore
-console.log(shape.color);
-//
-// function nullShape(shape: IShape) {
-//     shape.name = 'null'
-//     return shape
-// }
-//
-// const shape = nullShape(changeShape(new Circle()))
-// console.log(shape)
 //# sourceMappingURL=app.js.map
