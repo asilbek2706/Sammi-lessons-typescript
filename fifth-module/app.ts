@@ -25,4 +25,6 @@ type CreatedEntity = { createdAt: Date }
 const course = new Course() as Course & CreatedEntity
 const lesson = new Lesson() as Lesson & CreatedEntity
 
+console.log(course)
+console.log(lesson)
 
